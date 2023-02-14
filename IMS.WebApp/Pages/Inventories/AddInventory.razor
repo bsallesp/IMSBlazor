@@ -1,0 +1,22 @@
+﻿@page "/addinventory"
+
+@inject NavigationManager NavigationManager
+@inject IAddInventoryUseCase AddInventoryUseCase
+
+<h3>Add Inventory</h3>
+<br />
+
+@code {
+	private Inventory inventory = new Inventory();
+
+	private async Task SaveInventory()
+	{
+		await AddInventoryUseCase.ExecuteAsync(inventory);
+		NavigationManager.NavigateTo("/inventories");
+	}
+
+	private void Cancel()
+	{
+		NavigationManager.NavigateTo("/inventories");
+	}
+}

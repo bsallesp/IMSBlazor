@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 @inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
+@inject IEditInventoryUsecase EditInventoryUsecase
 
 <PageTitle>Test Page</PageTitle>
 <br />
@@ -20,5 +21,11 @@
 	protected override async Task OnInitializedAsync()
 	{
 		_inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync()).ToList();
+		
+		var inventory = new Inventory { InventoryId = 1, InventoryName = "Bike body", Quantity = 99, Price = 2 };
+
+		await EditInventoryUsecase.ExecuteAsync(inventory);
+
+		_inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync("apple")).ToList();
 	}
 }
