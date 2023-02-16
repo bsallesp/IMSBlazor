@@ -1,0 +1,16 @@
+﻿@page "/products"
+
+<h3>Product List</h3>
+<br />
+<SearchProductComponent OnSearchProduct="OnSearchProduct"></SearchProductComponent>
+<br />
+
+
+@code {
+	private string searchTerm = string.Empty;
+
+	private void OnSearchProduct(string searchTerm)
+	{
+		this.searchTerm = searchTerm;
+	}
+}

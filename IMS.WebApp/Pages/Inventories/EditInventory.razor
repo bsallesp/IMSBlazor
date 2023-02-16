@@ -2,7 +2,7 @@
 
 @inject NavigationManager NavigationManager
 @inject IViewInventoryByIdUseCase ViewInventoryByIdUseCase
-@inject IEditInventoryUsecase IEditInventoryUsecase
+@inject IEditInventoryUsecase EditInventoryUsecase
 
 <h3>Edit Inventory</h3>
 <br />
@@ -47,7 +47,7 @@
 
 	private async Task SaveInventory()
 	{
-		await IEditInventoryUsecase.ExecuteAsync(this.inventory);
+		await EditInventoryUsecase.ExecuteAsync(this.inventory);
 		NavigationManager.NavigateTo("/inventories");
 	}
 
